@@ -13,9 +13,11 @@ function bucketize(string, num) {
     if (i === arr.length-1) {
       final.push(str);
     }
+   
+    if (arr[i-1].length > num) {
+      return [];
+    }
   }
-  
-  console.log(final);
   return final;
   
 }
