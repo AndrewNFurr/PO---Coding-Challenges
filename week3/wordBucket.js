@@ -1,25 +1,22 @@
 function bucketize(string, num) {
-    let arr = [];
-    let count = 0;
-    let tempString = '';
-    let stringToAdd = '';
-    for (let i = 0;i<string.length;i++) {
-      let currChar = string[i];
-      tempString += string[i];
-      if (currChar === ' ' || i === string.length-1) {
-        stringToAdd += tempString;
-        tempString = '';
-      }
-      if (count === num || i === string.length-1) {
-        if (i === string.length-1) {
-          arr.push(stringToAdd);
-        } else {
-          arr.push(stringToAdd.substring(0, stringToAdd.length-1));
-        }
-        stringToAdd = '';
-        count = 0;
-      }
-      count++;
+  let arr = string.split(' ');
+  let final = [];
+  let str = `${arr[0]}`;
+  for (let i = 1;i<arr.length;i++) {
+    let temp = str + ' ' + arr[i];
+    if (temp.length <= num) {
+      str += ' ' + arr[i];
+    } else {
+      final.push(str);
+      str = arr[i];
     }
-    return arr;
+    if (i === arr.length-1) {
+      final.push(str);
+    }
   }
+  
+  console.log(final);
+  return final;
+  
+}
+  
